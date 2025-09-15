@@ -18,7 +18,7 @@ export default defineConfig({
     // Минификация CSS
     cssMinify: true,
     // Оптимизация размера
-    minify: 'terser',
+    minify: 'esbuild',
   },
   // Оптимизация dev сервера
   server: {
