@@ -1,0 +1,55 @@
+.notFound {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+    background-color: #ffffff; /* Используем белый фон */
+    color: rgb(17, 24, 39); /* Основной цвет текста */
+    font-family: 'Inter', sans-serif; /* Используем шрифт Inter */
+
+    .notFound__icon {
+        width: 100px; /* Размер иконки */
+        height: 100px;
+        color: rgb(75, 85, 99); /* Цвет иконки */
+        margin-bottom: 30px;
+    }
+
+    h1 {
+        font-size: 4em; /* Уменьшим размер для баланса */
+        margin-bottom: 10px;
+        color: rgb(17, 24, 39);
+        font-weight: 700;
+    }
+
+    p {
+        font-size: 1.2em;
+        margin-bottom: 40px; /* Увеличим отступ для кнопки */
+        color: rgb(75, 85, 99);
+        font-weight: 350;
+    }
+
+    button {
+        width: 200px;
+        height: 50px;
+        font-size: 1em;
+        color: #fff; /* Белый текст для кнопки */
+        background-color: #3b82f6; /* Синий фон как на других кнопках */
+        text-decoration: none;
+        border: 1px solid #3b82f6; /* Рамка в цвет кнопки */
+        border-radius: 8px; /* Скругление как на других кнопках */
+        transition: all 0.3s ease;
+        font-weight: 500;
+        box-shadow: 0 2px 4px rgba(59, 130, 246, 0.2); /* Тень как на других кнопках */
+        white-space: nowrap;
+        font-family: Inter; /* Запрещаем перенос текста */
+
+        &:hover {
+            background-color: #2563eb;
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+    }
+}

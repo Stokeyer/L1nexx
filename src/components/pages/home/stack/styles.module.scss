@@ -1,0 +1,242 @@
+
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 500px;
+  text-align: center;
+  background-color: #ffffff;
+  padding: 80px 20px;
+}
+
+.stack h2{
+  font-size: 36px;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 16px;
+  font-family: 'Inter', sans-serif;
+}
+
+.stack p {
+  margin: 0 0 60px 0;
+  font-size: 18px;
+  color: #6b7280;
+  font-weight: 400;
+  font-family: 'Inter', sans-serif;
+}
+
+.stack__container{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 50px;
+  width: 100%;
+  max-width: 900px;
+  padding: 0 20px;
+  text-decoration: none;
+}
+
+.stack__container section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 120px;
+  background-color: #f8fafc;
+  border-radius: 16px;
+  padding: 20px;
+  box-sizing: border-box;
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+.stack__container a{
+  text-decoration: none;
+}
+
+.stack__container section:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.stack__container section h3 {
+  margin: 0 0 8px 0;
+  line-height: 1;
+  font-size: 32px;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+}
+
+.stack__container section p {
+  margin: 0;
+  font-size: 14px;
+  color: #64748b;
+  font-weight: 500;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+}
+
+.stack__react{
+  color: rgb(59, 130, 246)
+}
+.stack__typescript{
+  color: rgb(37, 99, 235)
+}
+.stack__javascript{
+  color: rgb(234, 179, 8)
+}
+.stack__html{
+  color: rgb(249, 115, 22)
+}
+.stack__css{
+  color: rgb(96, 165, 250)
+}
+.stack__scss{
+  color: rgb(236, 72, 153)
+}
+.stack__button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: none;
+  border-radius: 8px;
+  background-color: transparent;
+  margin-top: 40px;
+  padding: 12px 24px;
+  color: #3b82f6;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.stack__button_svg{
+  width: 16px;
+  height: 16px;
+  transition: transform 0.3s ease;
+}
+
+.stack__button:hover{
+  color: #1d4ed8;
+  transform: translateY(-2px);
+}
+
+.stack__button:hover .stack__button_svg{
+  transform: translateX(4px);
+}
+
+/* Адаптивность для Stack */
+@media (max-width: 768px) {
+  .stack {
+    padding: 30px 15px;
+  }
+  
+  .stack h2 {
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
+  
+  .stack p {
+    font-size: 16px;
+    margin-bottom: 30px;
+  }
+  
+  .stack__container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    max-width: 600px;
+  }
+  
+  .stack__react,
+  .stack__typescript,
+  .stack__javascript,
+  .stack__html,
+  .stack__css,
+  .stack__scss {
+    padding: 20px 15px;
+    min-height: 100px;
+  }
+  
+  .stack__react h3,
+  .stack__typescript h3,
+  .stack__javascript h3,
+  .stack__html h3,
+  .stack__css h3,
+  .stack__scss h3 {
+    font-size: 24px;
+    margin-bottom: 8px;
+  }
+  
+  .stack__react p,
+  .stack__typescript p,
+  .stack__javascript p,
+  .stack__html p,
+  .stack__css p,
+  .stack__scss p {
+    font-size: 12px;
+  }
+  
+  .stack__button {
+    font-size: 14px;
+    padding: 12px 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .stack {
+    padding: 20px 10px;
+  }
+  
+  .stack h2 {
+    font-size: 20px;
+  }
+  
+  .stack p {
+    font-size: 14px;
+  }
+  
+  .stack__container {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    max-width: 300px;
+  }
+  
+  .stack__react,
+  .stack__typescript,
+  .stack__javascript,
+  .stack__html,
+  .stack__css,
+  .stack__scss {
+    padding: 15px 12px;
+    min-height: 80px;
+  }
+  
+  .stack__react h3,
+  .stack__typescript h3,
+  .stack__javascript h3,
+  .stack__html h3,
+  .stack__css h3,
+  .stack__scss h3 {
+    font-size: 20px;
+    margin-bottom: 6px;
+  }
+  
+  .stack__react p,
+  .stack__typescript p,
+  .stack__javascript p,
+  .stack__html p,
+  .stack__css p,
+  .stack__scss p {
+    font-size: 11px;
+  }
+  
+  .stack__button {
+    font-size: 12px;
+    padding: 10px 20px;
+  }
+}

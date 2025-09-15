@@ -1,0 +1,410 @@
+.Cover{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    min-height: 1000px;
+}
+
+.Cover__container{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+    width: 80%;
+    height: auto;
+    margin-top: 50px;
+}
+
+.Cover__container h2{
+    font-family: Inter;
+    font-size: 36px;
+    font-weight: 700;
+    color: rgb(17, 24, 39);
+}
+
+.Cover__container p{
+    font-family: Inter;
+    font-size: 20px;
+    font-weight: 350;
+    color: rgb(75, 85, 99);
+}
+
+@media (max-width: 768px){
+    .Cover__container p{
+        text-align: center;
+    }
+}
+
+.Cover__section{
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    width: 60%;
+    height: auto;
+    margin-top: 35px;
+}
+
+.Cover__information{
+    width: 60%;
+    height: 100%;
+}
+
+.Cover__cards{
+    display: flex;
+    flex-direction:column;
+    margin-top: 56px;
+    gap: 14px;
+    width: 40%;
+    height: 100%;
+}
+
+.Cover__information h2{
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.Cover__information_container p {
+    font-size: 15px;
+    white-space: pre-wrap;
+    text-align: left;
+    font-weight: 500;
+    line-height: 24px;
+    padding: 15px;
+    
+}
+
+.Cover__information_container  {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    background-color: rgb(249, 250, 251);
+    margin-top: 20px;
+}
+
+.Cover__cards_facts{
+    display: flex;
+    width: 300px;
+    height: auto;
+    border-radius: 12px;
+    border: 1px solid rgb(229, 231, 235);
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 30px;
+    gap: 20px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+}
+
+.Cover__cards_facts h3{
+    padding-top: 10px;
+    font-family: Inter;
+    font-size: 18px;
+    font-weight: 600;
+    color: rgb(17, 24, 39);
+    margin-top: 20px;
+}
+
+.Cover__cards_facts section{
+    width: 80%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.Cover__cards_facts section:last-child {
+    margin-bottom: 0;
+}
+
+
+.Cover__cards_facts section h4{
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 500;
+    color: rgb(75, 85, 99);
+    line-height: 1.2;
+    text-align: left; /* Устанавливаем text-align: left */
+}
+
+.Cover__cards_facts section p{
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 600;
+    color: rgb(17, 24, 39);
+    white-space: pre-wrap;
+    line-height: 1.4;
+    text-align: left; /* Устанавливаем text-align: left */
+}
+
+
+
+.Cover__motivation{
+    display: flex;
+    flex-direction: column;
+    margin-top: 25px;
+    width: 100%;
+    height: auto;
+}
+
+.Cover__motivation h3{
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.Cover__motivation ul{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-left: 22px;
+    margin-top: 15px;
+    color: rgb(37, 99, 235);
+}
+
+.Cover__motivation ul li p{
+    color: rgb(55, 65, 81);
+    font-weight: 350;
+    font-size: 16px;
+}
+
+.Cover__cards_ready{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    height: auto;
+    background-image: linear-gradient(to right, rgb(239, 246, 255), rgb(250, 245, 255));
+    border-radius: 12px;
+    padding-bottom: 15px;
+}
+
+.Cover__cards_ready h3{
+    padding: 20px;
+}
+
+.Cover__cards_ready section{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 90%;
+    height: auto;
+    padding-bottom: 10px;
+}
+
+.Cover__cards_ready section p{
+    white-space: pre-wrap;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.Cover__cards_ready section nav{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    gap: 15px;
+    color: rgb(22, 163, 74);
+}
+
+.Cover__cards_ready section nav p{
+    color: rgb(22, 163, 74);
+}
+@media (max-width: 1024px) {
+    .Cover__section {
+        width: 80%;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .Cover__information {
+        width: 100%;
+        height: auto;
+    }
+
+    .Cover__cards {
+        width: 100%;
+        height: auto;
+        margin-top: 20px;
+    }
+
+    .Cover__cards_facts {
+        padding: 15px;
+    }
+
+    .Cover__cards_facts section {
+        width: 95%;
+    }
+
+    .Cover__container h2 {
+        font-size: 30px;
+    }
+
+    .Cover__container p {
+        font-size: 18px;
+    }
+
+    .Cover__information h2 {
+        font-size: 20px;
+    }
+
+    .Cover__information_container p {
+        font-size: 12px;
+        text-align: center;
+    }
+    .Cover__motivation{
+        align-items: center;
+    }
+    .Cover__cards{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+     }
+    .Cover__cards_facts  {
+        width: 67%;
+    }
+    .Cover__cards_facts section {
+        width: 100%;
+        padding-left: 10px;
+    }
+    .Cover__motivation ul li p{
+        text-align: start;
+    }
+    .Cover__cards_facts section h4{
+        text-align: left;
+    }
+    .Cover__cards_facts section p{
+        text-align: left;
+    }
+    .Cover__cards_ready{
+        width: 67%;
+    }
+    
+}
+
+@media (max-width: 768px) {
+    .Cover__container {
+        width: 90%;
+    }
+
+    .Cover__section {
+        width: 100%;
+    }
+
+    .Cover__container h2 {
+        font-size: 24px;
+    }
+
+    .Cover__container p {
+        font-size: 16px;
+    }
+
+    .Cover__information h2 {
+        font-size: 18px;
+    }
+
+    .Cover__information_container p {
+        font-size: 12px;
+    }
+    .Cover__motivation{
+        align-items: center;
+    }
+    .Cover__motivation ul li p{
+        text-align: start;
+    }
+    .Cover__cards{
+       display: flex;
+       width: 65%;
+       justify-content: center;
+       align-items: center;
+    }
+    .Cover__cards_facts  {
+        width: 70%;
+        padding-bottom: 50px; /* Устанавливаем ширину 100% */
+    }
+    .Cover__cards_facts section {
+        width: 100%; /* Устанавливаем ширину 100% */
+    }
+    .Cover__cards_facts section h4{
+        text-align: left;
+    }
+    .Cover__cards_facts section p{
+        text-align: left;
+    }
+    .Cover__cards_ready{
+        width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    .Cover__container {
+        width: 95%;
+        margin-top: 20px;
+    }
+
+    .Cover__section {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .Cover__information {
+        width: 100%;
+        height: auto;
+    }
+
+    .Cover__information_container {
+        margin-top: 10px;
+    }
+
+    .Cover__cards {
+        width: 100%;
+        margin-top: 15px;
+    }
+
+    .Cover__cards_facts {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .Cover__cards_facts section {
+        width: 100%;
+        margin-bottom: 5px; /* Уменьшаем отступ для очень маленьких экранов */
+    }
+
+    .Cover__container h2 {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .Cover__container p {
+        font-size: 14px;
+        text-align: center;
+    }
+
+    .Cover__information h2 {
+        font-size: 16px;
+        text-align: center;
+    }
+
+    .Cover__information_container p {
+        font-size: 10px;
+        text-align: center;
+        padding: 10px;
+    }
+    .Cover__cards_facts section h4{
+        text-align: left;
+    }
+    .Cover__cards_facts  {
+        width: 90%;
+        padding-bottom: 20px;
+    }
+    .Cover__motivation{
+        align-items: center;
+    }
+    .Cover__motivation ul li p{
+        text-align: start;
+    }
+    .Cover__cards_facts section p{
+        text-align: left;
+        margin-top: 5px;
+    }
+    .Cover__cards_ready{
+        width: 90%;
+    }
+}

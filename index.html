@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Frontend Developer </title>
+    <link rel="icon" href="" type="image/x-icon">
+    
+    <!-- Preload критических шрифтов -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"></noscript>
+    
+    <!-- Preload критических CSS -->
+    <link rel="preload" href="/src/App.css" as="style">
+    
+    <!-- Preload критических изображений -->
+    <link rel="preload" href="/src/components/assets/optimized/avatar-optimized.avif" as="image" type="image/avif">
+    <link rel="preload" href="/src/components/assets/optimized/avatar-optimized.webp" as="image" type="image/webp">
+    
+    <!-- Критический CSS inline для улучшения LCP -->
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      
+      html {
+        scroll-padding-top: 0;
+      }
+      
+      html, body {
+        height: 100%;
+        overflow-x: hidden;
+        position: relative;
+      }
+      
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #ffffff;
+        color: #000000;
+        line-height: 1.6;
+        position: relative;
+        width: 100%;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+      }
+      
+      #root {
+        height: 100%;
+        width: 100%;
+      }
+      
+      /* Fallback шрифт для предотвращения FOIT */
+      @font-face {
+        font-family: 'Inter';
+        font-display: swap;
+        src: local('Inter'), local('Inter-Regular');
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

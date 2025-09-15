@@ -1,0 +1,83 @@
+.MyTechSkills{
+    display: flex;
+    width: 100%;
+    height: auto;
+    justify-content: center;
+}
+
+.MyTechSkills__container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding-top: 40px;
+    width: 90%; /* Default for extra small screens */
+    height: auto;
+}
+
+.MyTechSkills__container h3{
+    font-size: 36px; /* Adjusted default for extra small screens */
+    font-weight: 700;
+    text-align: center;
+}
+
+.MyTechSkills__container p {
+    font-size: 20px; /* Adjusted default for extra small screens */
+    color: rgb(75, 85, 99);
+    margin-top: 5px; /* Adjusted default margin for small screens */
+    text-align: center;
+}
+
+/* Small screens (mobile devices) */
+@media (min-width: 480px) {
+    .MyTechSkills__container {
+        padding-top: 50px;
+        width: 80%;
+    }
+    .MyTechSkills__container h3 {
+        font-size: 28px;
+    }
+    .MyTechSkills__container p {
+        font-size: 16px;
+    }
+}
+
+/* Medium screens (tablets) */
+@media (min-width: 768px) {
+    .MyTechSkills__container {
+        padding-top: 60px;
+        width: 60%;
+    }
+    .MyTechSkills__container h3 {
+        font-size: 34px;
+    }
+    .MyTechSkills__container p {
+        font-size: 18px;
+    }
+}
+
+/* Large screens (desktops) */
+@media (min-width: 1024px) {
+    .MyTechSkills__container {
+        width: 45%;
+    }
+    .MyTechSkills__container h3 {
+        font-size: 38px;
+    }
+    .MyTechSkills__container p {
+        font-size: 20px;
+    }
+}
+
+/* Extra large screens */
+@media (min-width: 1440px) {
+    .MyTechSkills__container {
+        width: 35%;
+    }
+    .MyTechSkills__container h3 {
+        font-size: 36px;
+    }
+    .MyTechSkills__container p {
+        font-size: 20px;
+    }
+}

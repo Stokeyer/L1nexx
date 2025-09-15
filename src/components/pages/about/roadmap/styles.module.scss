@@ -1,0 +1,162 @@
+.RoadMap{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    min-height: 600px;
+    margin-top: 40px;
+}
+
+.RoadMap__container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+}
+
+.RoadMap__list{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-top: 30px;
+}
+
+.RoadMap__item{
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.RoadMap__item_purple{
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.RoadMap__item_purple::before{
+    content: '';
+    margin-top: 5px;
+    width: 15px;
+    height: 15px;
+    background-color: rgb(147, 51, 234);
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.RoadMap__item::before{
+    content: '';
+    margin-top: 5px;
+    width: 15px;
+    height: 15px;
+    background-color: rgb(37, 99, 235);
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+
+.RoadMap__container h3{
+    font-family: Inter;
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.RoadMap__item h5,
+.RoadMap__item_purple h5{
+    font-weight: 400;
+    font-size: 15px;
+    color: rgb(75 85 99)
+}
+
+.RoadMap__item p,
+.RoadMap__item_purple p{
+    margin-top: 5px;
+    font-size: 13px;
+    color: rgb(75 85 99)
+}
+
+
+@media (max-width: 1024px) {
+    .RoadMap__container {
+        width: 80%;
+    }
+
+    .RoadMap__container h3 {
+        font-size: 23px;
+    }
+
+    .RoadMap__item section h4 {
+        font-size: 17px;
+    }
+
+    .RoadMap__item section h5 {
+        font-size: 14px;
+    }
+
+    .RoadMap__info {
+        font-size: 12px;
+    }
+
+    .RoadMap__list {
+        gap: 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .RoadMap__container {
+        width: 90%;
+    }
+
+    .RoadMap__container h3 {
+        font-size: 21px;
+    }
+
+    .RoadMap__item section h4 {
+        font-size: 16px;
+    }
+
+    .RoadMap__item section h5 {
+        font-size: 13px;
+    }
+
+    .RoadMap__info {
+        font-size: 11px;
+    }
+
+    .RoadMap__list {
+        gap: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .RoadMap__container {
+        width: 95%;
+        margin-top: 20px;
+        margin-bottom: 30px;
+    }
+
+    .RoadMap__container h3 {
+        font-size: 19px;
+    }
+
+    .RoadMap__item section h4 {
+        font-size: 15px;
+    }
+
+    .RoadMap__item section h5 {
+        font-size: 12px;
+    }
+
+    .RoadMap__info {
+        font-size: 10px;
+    }
+
+    .RoadMap__list {
+        gap: 30px;
+    }
+
+    .RoadMap{
+        min-height: auto;
+        margin-top: 20px; /* Adjusted for better spacing on mobile */
+    }
+}

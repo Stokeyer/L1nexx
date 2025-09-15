@@ -1,0 +1,30 @@
+.div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.div h1 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-top: 50px;
+}
+
+.div p {
+    font-size: 20px;
+    font-weight: 350;
+    color: rgb(75, 85, 99);
+    margin-top: 10px;
+}
+
+.Contacts__form_container{
+    display: flex;
+    flex-direction: row;
+    width: 1088px;
+    height: 931px;
+    margin-top: 50px;
+}

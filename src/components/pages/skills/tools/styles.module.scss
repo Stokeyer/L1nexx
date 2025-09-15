@@ -1,0 +1,199 @@
+.tools {
+    display: flex;
+    margin-top: 50px;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+}
+
+.tools__container {
+    display: flex;
+    width: 95%;
+    max-width: 1050px;
+    height: auto;
+    flex-direction: column;
+    border-radius: 8px;
+    border: rgb(229, 231, 235) 1px solid;
+    box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+        rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+}
+
+.tools__container h2 {
+    padding: 20px;
+    font-size: 20px;
+    font-weight: 750;
+    color: rgb(17, 24, 39);
+    text-align: center;
+}
+
+.tools__section {
+    display: grid;
+    width: auto;
+    height: auto;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: auto;
+    grid-column-gap: 0px;
+    grid-row-gap: 20px;
+    margin: 0px 20px 20px 20px;
+}
+
+.tools__section div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    height: auto;
+}
+
+.tools__section div p {
+    color: rgb(75, 85, 99);
+    font-size: 14px;
+}
+
+.tools__section div nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+.tools__section div nav p {
+    color: rgb(107, 114, 128);
+    font-size: 14px;
+    font-weight: 500px;
+}
+
+.Progress__line_gray {
+    width: 100%;
+    height: 8px;
+    background-color: rgb(229 231 235);
+    border-radius: 9999px;
+}
+
+.Progress__line_git {
+    width: 70%;
+    height: 8px;
+    background-image: linear-gradient(to right,
+            rgb(37, 99, 235),
+            rgb(147, 51, 234));
+    border-radius: 9999px;
+}
+
+.Progress__line_webpack {
+    width: 60%;
+    height: 8px;
+    background-image: linear-gradient(to right,
+            rgb(37, 99, 235),
+            rgb(147, 51, 234));
+    border-radius: 9999px;
+}
+
+.Progress__line_vite {
+    width: 75%;
+    height: 8px;
+    background-image: linear-gradient(to right,
+            rgb(37, 99, 235),
+            rgb(147, 51, 234));
+    border-radius: 9999px;
+}
+
+.Progress__line_npm {
+    width: 80%;
+    height: 8px;
+    background-image: linear-gradient(to right,
+            rgb(37, 99, 235),
+            rgb(147, 51, 234));
+    border-radius: 9999px;
+}
+
+.Progress__line_vsCode {
+    width: 90%;
+    height: 8px;
+    background-image: linear-gradient(to right,
+            rgb(37, 99, 235),
+            rgb(147, 51, 234));
+    border-radius: 9999px;
+}
+
+.Progress__line_chromeDevTools {
+    width: 75%;
+    height: 8px;
+    background-image: linear-gradient(to right,
+            rgb(37, 99, 235),
+            rgb(147, 51, 234));
+    border-radius: 9999px;
+}
+
+.tools__section div h3 {
+    font-weight: 550;
+    font-size: 16px;
+}
+
+
+@media (min-width: 480px) {
+    .tools__container {
+        width: 90%;
+    }
+    .tools__container h2 {
+        font-size: 22px;
+    }
+    .tools__section {
+        margin: 0px 25px 25px 25px;
+        grid-row-gap: 30px;
+        grid-column-gap: 10px;
+    }
+    .tools__section div p {
+        font-size: 15px;
+    }
+    .tools__section div nav p {
+        font-size: 15px;
+    }
+    .tools__section div h3 {
+        font-size: 17px;
+    }
+}
+
+
+@media (min-width: 768px) {
+    .tools__container {
+        width: 80%;
+    }
+    .tools__container h2 {
+        padding: 30px;
+        font-size: 26px;
+        text-align: left;
+    }
+    .tools__section {
+        grid-template-columns: repeat(2, 1fr);
+        grid-column-gap: 10px;
+        grid-row-gap: 10px;
+        margin-left: 30px;
+    }
+    .tools__section div {
+        width: auto;
+        height: 80px;
+    }
+    .tools__section div p {
+        font-size: 14px;
+    }
+    .tools__section div nav p {
+        font-size: 14px;
+    }
+    .tools__section div h3 {
+        font-size: 18px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .tools__container {
+        width: 70%;
+    }
+    .tools__container h2 {
+        font-size: 28px;
+    }
+}
+
+
+@media (min-width: 1440px) {
+    .tools__container {
+        width: 1050px;
+    }
+}
