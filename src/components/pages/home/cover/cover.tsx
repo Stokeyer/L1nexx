@@ -146,7 +146,7 @@ export const Cover: React.FC<CoverProps> = (props = defaultCoverData) => {
                         className={cl.Cover__text}
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.6, duration: 0.5 }}
+                        transition={{ delay: 0.9, duration: 0.6 }}
                     >
                         {coverInfo?.text || 'Разработчик с опытом создания современных веб-приложений'}
                     </motion.p>
