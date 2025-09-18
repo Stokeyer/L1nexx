@@ -1,0 +1,53 @@
+# Netlify headers для безопасности и производительности
+
+# Основные заголовки безопасности
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  X-XSS-Protection: 1; mode=block
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=()
+
+# Кэширование статических ресурсов
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Кэширование изображений
+/*.jpg
+  Cache-Control: public, max-age=2592000
+/*.jpeg
+  Cache-Control: public, max-age=2592000
+/*.png
+  Cache-Control: public, max-age=2592000
+/*.webp
+  Cache-Control: public, max-age=2592000
+/*.avif
+  Cache-Control: public, max-age=2592000
+/*.svg
+  Cache-Control: public, max-age=2592000
+
+# Кэширование шрифтов
+/*.woff
+  Cache-Control: public, max-age=31536000
+/*.woff2
+  Cache-Control: public, max-age=31536000
+
+# Кэширование CSS и JS
+/*.css
+  Cache-Control: public, max-age=2592000
+/*.js
+  Cache-Control: public, max-age=2592000
+
+# HTML файлы
+/*.html
+  Cache-Control: public, max-age=3600
+
+# robots.txt
+/robots.txt
+  Content-Type: text/plain
+  Cache-Control: public, max-age=86400
+
+# sitemap.xml
+/sitemap.xml
+  Content-Type: application/xml
+  Cache-Control: public, max-age=86400

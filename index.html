@@ -3,23 +3,40 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Frontend Developer </title>
+    <title>Stokeyer - Frontend Developer | React, TypeScript, JavaScript</title>
+    <meta name="description" content="Frontend разработчик с опытом создания современных веб-приложений на React, TypeScript, JavaScript, HTML, CSS и SCSS. Специализируюсь на создании адаптивных интерфейсов и чистого кода.">
+    <meta name="keywords" content="frontend developer, react, typescript, javascript, web development, веб-разработка, программист">
+    <meta name="author" content="Stokeyer">
+    <meta name="robots" content="index, follow">
     <link rel="icon" href="" type="image/x-icon">
+    
+    <!-- Open Graph мета-теги для социальных сетей -->
+    <meta property="og:title" content="Stokeyer - Frontend Developer">
+    <meta property="og:description" content="Frontend разработчик с опытом создания современных веб-приложений на React, TypeScript, JavaScript">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://your-domain.com">
+    <meta property="og:image" content="https://your-domain.com/avatar-optimized.webp">
+    <meta property="og:site_name" content="Stokeyer Portfolio">
+    
+    <!-- Twitter Card мета-теги -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Stokeyer - Frontend Developer">
+    <meta name="twitter:description" content="Frontend разработчик с опытом создания современных веб-приложений на React, TypeScript, JavaScript">
+    <meta name="twitter:image" content="https://your-domain.com/avatar-optimized.webp">
     
     <!-- Оптимизация производительности -->
     <meta name="theme-color" content="#ffffff">
     <meta name="color-scheme" content="light">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     
+    <!-- Канонический URL -->
+    <link rel="canonical" href="https://your-domain.com">
+    
     <!-- Оптимизированная загрузка шрифтов -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-    
-    <!-- Preload только критических весов шрифта -->
-    <link rel="preload" href="https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiJ-Ek-_EeA.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuI6fAZ9hiA.woff2" as="font" type="font/woff2" crossorigin>
     
     <!-- Асинхронная загрузка CSS шрифтов -->
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -116,17 +133,33 @@
     
     <!-- Оптимизация загрузки шрифтов -->
     <script>
-      // Предзагрузка критических шрифтов
-      if ('fonts' in document) {
-        document.fonts.ready.then(() => {
+      // Простая и надежная обработка загрузки шрифтов
+      (function() {
+        const addFontsLoadedClass = () => {
           document.documentElement.classList.add('fonts-loaded');
-        });
-      }
-      
-      // Fallback для старых браузеров
-      setTimeout(() => {
-        document.documentElement.classList.add('fonts-loaded');
-      }, 3000);
+        };
+
+        if ('fonts' in document) {
+          try {
+            document.fonts.ready.then(() => {
+              addFontsLoadedClass();
+            }).catch((error) => {
+              console.warn('Font loading failed:', error);
+              addFontsLoadedClass();
+            });
+          } catch (error) {
+            console.warn('Font API error:', error);
+            addFontsLoadedClass();
+          }
+        }
+        
+        // Fallback для старых браузеров и на случай ошибок
+        setTimeout(() => {
+          if (!document.documentElement.classList.contains('fonts-loaded')) {
+            addFontsLoadedClass();
+          }
+        }, 2000);
+      })();
     </script>
     
     <script type="module" src="/src/main.tsx"></script>

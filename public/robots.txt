@@ -1,0 +1,34 @@
+User-agent: *
+Allow: /
+
+# Разрешить индексацию всех страниц
+Allow: /about
+Allow: /skills
+Allow: /projects
+Allow: /contacts
+
+# Запретить индексацию служебных файлов
+Disallow: /src/
+Disallow: /node_modules/
+Disallow: /.git/
+Disallow: /package.json
+Disallow: /package-lock.json
+Disallow: /tsconfig.json
+Disallow: /vite.config.ts
+Disallow: /eslint.config.js
+
+# Указать расположение sitemap
+Sitemap: https://your-domain.com/sitemap.xml
+
+# Настройки для основных поисковых систем
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Yandex
+Allow: /
+
+# Задержка между запросами (в секундах)
+Crawl-delay: 1

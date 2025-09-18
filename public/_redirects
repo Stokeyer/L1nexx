@@ -1,0 +1,8 @@
+# Netlify redirects для SPA
+/*    /index.html   200
+
+# Redirects для SEO
+/about    /index.html   200
+/skills    /index.html   200
+/projects    /index.html   200
+/contacts    /index.html   200
