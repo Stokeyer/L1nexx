@@ -25,7 +25,6 @@ export const Contacts = () => {
             <ContactInfo />
          </div>
       </div>
-
     </ContentTransition>
     </>
   );
