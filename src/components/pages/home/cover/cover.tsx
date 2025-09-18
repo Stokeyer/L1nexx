@@ -12,7 +12,7 @@ const defaultCoverData: CoverProps = {
     CoverInfo: {
         nickname: 'Stokeyer',
         job: 'Frontend Developer',
-        text: 'Начинающий разработчик с опытом создания современных веб-приложений на \n React, TypeScript, JavaScript, HTML, CSS и SCSS'
+        text: 'Разработчик с опытом создания современных веб-приложений на \n React, TypeScript, JavaScript, HTML, CSS и SCSS'
     },
     CoverCards: {
         title_code: 'Чистый код',
@@ -146,9 +146,9 @@ export const Cover: React.FC<CoverProps> = (props = defaultCoverData) => {
                         className={cl.Cover__text}
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.9, duration: 0.6 }}
+                        transition={{ delay: 0.6, duration: 0.5 }}
                     >
-                        {coverInfo?.text || 'Начинающий разработчик с опытом создания современных веб-приложений'}
+                        {coverInfo?.text || 'Разработчик с опытом создания современных веб-приложений'}
                     </motion.p>
                 </motion.section>
                 <motion.div 
