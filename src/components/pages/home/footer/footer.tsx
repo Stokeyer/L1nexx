@@ -110,6 +110,8 @@ export const Footer: React.FC<footerProps> = (props = defaultFooterData) => {
                                 variants={linkVariants}
                                 whileHover={{ scale: 1.1, y: -2 }}
                                 whileTap={{ scale: 0.9 }}
+                                aria-label="Перейти к профилю GitHub Stokeyer"
+                                title="GitHub"
                             >
                                 <motion.svg 
                                     className="w-5 h-5" 
@@ -118,6 +120,7 @@ export const Footer: React.FC<footerProps> = (props = defaultFooterData) => {
                                     initial={{ rotate: 0 }}
                                     whileHover={{ rotate: 360 }}
                                     transition={{ duration: 0.5 }}
+                                    aria-hidden="true"
                                 >
                                     <path
                                         fillRule="evenodd"
@@ -125,21 +128,28 @@ export const Footer: React.FC<footerProps> = (props = defaultFooterData) => {
                                         clipRule="evenodd"
                                     ></path>
                                 </motion.svg>
+                                <span className="sr-only">GitHub профиль</span>
                             </motion.a>
                             <motion.a
                                 href="https://hh.ru/resume/7c7290acff0ec91ce80039ed1f43694e6e6f6b"
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 variants={linkVariants}
                                 whileHover={{ scale: 1.1, y: -2 }}
                                 whileTap={{ scale: 0.9 }}
+                                aria-label="Перейти к резюме на HeadHunter"
+                                title="HeadHunter"
                             >
                                 <motion.img
                                     src={HhLogo}
-                                    alt="HeadHunter"
+                                    alt=""
                                     className="w-5 h-5"
                                     initial={{ rotate: 0 }}
                                     whileHover={{ rotate: 5 }}
                                     transition={{ duration: 0.3 }}
+                                    aria-hidden="true"
                                 />
+                                <span className="sr-only">Резюме на HeadHunter</span>
                             </motion.a>
                         </motion.nav>
                     </motion.section>
