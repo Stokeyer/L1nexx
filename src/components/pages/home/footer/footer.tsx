@@ -103,7 +103,7 @@ export const Footer: React.FC<footerProps> = (props = defaultFooterData) => {
                             variants={navVariants}
                         >
                             <motion.a
-                                href="https://github.com/Edita28"
+                                href="https://github.com/stokeyer"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="text-gray-400 hover:text-gray-600 transition-colors"
