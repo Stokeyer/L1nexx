@@ -39,4 +39,17 @@ body {
   border: 0;
 }
 
+/* Улучшение четкости текста при анимации */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Предотвращение blur эффекта при анимации */
+.motion-element {
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
 
