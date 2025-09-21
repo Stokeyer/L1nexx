@@ -198,9 +198,7 @@ const CustomSelect = ({ options, value, onChange, placeholder }: {
 
 export const SendMail = (props: SendMailProps) => {
     const sendMailData = { ...defaultSendMailProps, ...props };
-    const SendMailContainer = sendMailData.SendMailContainer;
-    const SendMailForm = sendMailData.SendMailForm;
-    
+    const SendMailContainer = sendMailData.SendMailContainer;    
     const [selectedTheme, setSelectedTheme] = useState('');
     
     const themeOptions = [
