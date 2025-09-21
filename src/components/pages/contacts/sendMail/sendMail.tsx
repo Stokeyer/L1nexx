@@ -2,7 +2,8 @@
 import cl from "./styles.module.scss";
 import type { SendMailProps } from "./types";
 import { motion } from "framer-motion";
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
+import CustomSelect from "./CustomSelect";
 
 // Анимации для формы
 const containerVariants = {
@@ -128,110 +129,6 @@ const defaultSendMailProps: SendMailProps = {
 
 }
 
-// Кастомный компонент выпадающего меню
-const CustomSelect = ({ options, value, onChange, placeholder }: {
-    options: { value: string; label: string }[];
-    value: string;
-    onChange: (value: string) => void;
-    placeholder: string;
-}) => {
-    const [isOpen, setIsOpen] = useState(false);
-    const selectRef = useRef<HTMLDivElement>(null);
-    const selectedOption = options.find(option => option.value === value);
-
-    // Закрытие при клике вне элемента
-    useEffect(() => {
-        const handleClickOutside = (event: MouseEvent) => {
-            if (selectRef.current && !selectRef.current.contains(event.target as Node)) {
-                setIsOpen(false);
-            }
-        };
-
-        if (isOpen) {
-            document.addEventListener('mousedown', handleClickOutside);
-        }
-
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
-    }, [isOpen]);
-
-    // Закрытие при нажатии Escape
-    useEffect(() => {
-        const handleEscape = (event: KeyboardEvent) => {
-            if (event.key === 'Escape') {
-                setIsOpen(false);
-            }
-        };
-
-        if (isOpen) {
-            document.addEventListener('keydown', handleEscape);
-        }
-
-        return () => {
-            document.removeEventListener('keydown', handleEscape);
-        };
-    }, [isOpen]);
-
-    return (
-        <div className={cl.custom_select} ref={selectRef}>
-            <motion.div
-                className={cl.custom_select__trigger}
-                onClick={() => setIsOpen(!isOpen)}
-                whileHover={{ scale: 1.01 }}
-                whileTap={{ scale: 0.99 }}
-                tabIndex={0}
-                onKeyDown={(e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        setIsOpen(!isOpen);
-                    }
-                }}
-            >
-                <span className={cl.custom_select__value}>
-                    {selectedOption ? selectedOption.label : placeholder}
-                </span>
-                <motion.div
-                    className={cl.custom_select__arrow}
-                    animate={{ rotate: isOpen ? 180 : 0 }}
-                    transition={{ duration: 0.2 }}
-                >
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <polyline points="6,9 12,15 18,9"></polyline>
-                    </svg>
-                </motion.div>
-            </motion.div>
-
-            {isOpen && (
-                <motion.div
-                    className={cl.custom_select__dropdown}
-                    initial={{ opacity: 0, y: -10, scale: 0.95 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: -10, scale: 0.95 }}
-                    transition={{ duration: 0.2 }}
-                >
-                    {options.map((option) => (
-                        <motion.div
-                            key={option.value}
-                            className={`${cl.custom_select__option} ${value === option.value ? cl.custom_select__option_selected : ''}`}
-                            onClick={() => {
-                                onChange(option.value);
-                                setIsOpen(false);
-                            }}
-                            whileHover={{
-                                backgroundColor: value === option.value ? '#0062ff' : '#f3f4f6',
-                                color: value === option.value ? '#ffffff' : '#8696b1'
-                            }}
-                            whileTap={{ scale: 0.98 }}
-                        >
-                            {option.label}
-                        </motion.div>
-                    ))}
-                </motion.div>
-            )}
-        </div>
-    );
-};
 
 export const SendMail = (props: SendMailProps) => {
     const sendMailData = { ...defaultSendMailProps, ...props };
@@ -246,6 +143,7 @@ export const SendMail = (props: SendMailProps) => {
         { value: 'other', label: 'Другое' }
     ];
     return (
+        <>
         <motion.div
             className={cl.SendMail}
             variants={containerVariants}
@@ -372,5 +270,6 @@ export const SendMail = (props: SendMailProps) => {
                 </motion.form>
             </div>
         </motion.div>
-    )
-}
+    
+    </>
+)}

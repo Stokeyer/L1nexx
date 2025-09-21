@@ -4,6 +4,7 @@ import cl from "./styles.module.scss";
 import { ContactInfo } from "./contactInfo/contactInfo.tsx";
 import { SendMail } from "./sendMail/sendMail.tsx";
 import { Footer } from "../home/footer/footer.tsx";
+import { Questions } from "./questions/Questions.tsx";
 
 const headerData = {
   home: "Главная",
@@ -27,6 +28,7 @@ export const Contacts = () => {
             <ContactInfo />
             <SendMail />
          </div>
+         <Questions/>
       </div>
     </ContentTransition>
     <Footer/>
