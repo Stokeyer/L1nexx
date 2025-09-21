@@ -10,9 +10,9 @@ const containerVariants = {
     visible: {
         opacity: 1,
         transition: {
-            duration: 0.8,
-            staggerChildren: 0.1,
-            delayChildren: 0.2
+            duration: 1.0,
+            staggerChildren: 0.15,
+            delayChildren: 0.3
         }
     }
 };
@@ -20,19 +20,21 @@ const containerVariants = {
 const formVariants = {
     hidden: { 
         opacity: 0, 
-        y: 30, 
-        scale: 0.95
+        y: 50, 
+        scale: 0.9,
+        rotateX: -10
     },
     visible: { 
         opacity: 1, 
         y: 0, 
         scale: 1,
+        rotateX: 0,
         transition: {
-            duration: 0.6,
+            duration: 0.8,
             ease: [0.25, 0.1, 0.25, 1] as const,
             type: "spring" as const,
-            stiffness: 100,
-            damping: 15
+            stiffness: 120,
+            damping: 12
         }
     }
 };
@@ -40,22 +42,29 @@ const formVariants = {
 const fieldVariants = {
     hidden: { 
         opacity: 0, 
-        x: -20,
-        scale: 0.95
+        x: -30,
+        scale: 0.9,
+        rotateY: -5
     },
     visible: { 
         opacity: 1, 
         x: 0,
         scale: 1,
+        rotateY: 0,
         transition: {
-            duration: 0.5,
-            ease: "easeOut" as const
+            duration: 0.6,
+            ease: [0.25, 0.1, 0.25, 1] as const,
+            type: "spring" as const,
+            stiffness: 100,
+            damping: 10
         }
     },
     hover: {
         scale: 1.02,
+        y: -2,
         transition: {
-            duration: 0.2
+            duration: 0.3,
+            ease: "easeOut" as const
         }
     }
 };
@@ -63,15 +72,43 @@ const fieldVariants = {
 const buttonVariants = {
     hidden: { 
         opacity: 0, 
-        y: 20
+        y: 30,
+        scale: 0.8
     },
     visible: { 
         opacity: 1, 
         y: 0,
+        scale: 1,
         transition: {
-            duration: 0.6,
-            delay: 0.4,
-            ease: "backOut" as const
+            duration: 0.8,
+            delay: 0.6,
+            ease: [0.25, 0.1, 0.25, 1] as const,
+            type: "spring" as const,
+            stiffness: 100,
+            damping: 8
+        }
+    }
+};
+
+const titleVariants = {
+    hidden: { 
+        opacity: 0, 
+        y: -30,
+        scale: 0.8,
+        rotateX: 15
+    },
+    visible: { 
+        opacity: 1, 
+        y: 0,
+        scale: 1,
+        rotateX: 0,
+        transition: {
+            duration: 0.8,
+            delay: 0.1,
+            ease: [0.25, 0.1, 0.25, 1] as const,
+            type: "spring" as const,
+            stiffness: 120,
+            damping: 10
         }
     }
 };
@@ -216,17 +253,19 @@ export const SendMail = (props: SendMailProps) => {
             animate="visible"
         >
             <div className={cl.SendMail__container}>
-                <h2>
+                <motion.h2
+                    variants={titleVariants}
+                    whileHover={{ 
+                        scale: 1.05,
+                        transition: { duration: 0.3 }
+                    }}
+                >
                     {SendMailContainer?.heading}
-                </h2>
+                </motion.h2>
                 
                 <motion.form 
                     className={cl.SendMail__form}
                     variants={formVariants}
-                    whileHover={{ 
-                        scale: 1.01,
-                        transition: { duration: 0.3 }
-                    }}
                 >
                     <motion.div 
                         className={cl.SendMail__form_group}
@@ -242,6 +281,7 @@ export const SendMail = (props: SendMailProps) => {
                             required
                             whileFocus={{ 
                                 scale: 1.02,
+                                y: -1,
                                 transition: { duration: 0.2 }
                             }}
                         />
@@ -261,6 +301,7 @@ export const SendMail = (props: SendMailProps) => {
                             required
                             whileFocus={{ 
                                 scale: 1.02,
+                                y: -1,
                                 transition: { duration: 0.2 }
                             }}
                         />
@@ -279,6 +320,7 @@ export const SendMail = (props: SendMailProps) => {
                             placeholder="Название компании"
                             whileFocus={{ 
                                 scale: 1.02,
+                                y: -1,
                                 transition: { duration: 0.2 }
                             }}
                         />
@@ -290,17 +332,26 @@ export const SendMail = (props: SendMailProps) => {
                         whileHover="hover"
                     >
                         <label htmlFor="theme" className={cl.SendMail__label}>Тема *</label>
-                        <CustomSelect
-                            options={themeOptions}
-                            value={selectedTheme}
-                            onChange={setSelectedTheme}
-                            placeholder="Выберите тему"
-                        />
+                        <motion.div
+                            whileFocus={{ 
+                                scale: 1.02,
+                                y: -1,
+                                transition: { duration: 0.2 }
+                            }}
+                        >
+                            <CustomSelect
+                                options={themeOptions}
+                                value={selectedTheme}
+                                onChange={setSelectedTheme}
+                                placeholder="Выберите тему"
+                            />
+                        </motion.div>
                     </motion.div>
 
                     <motion.div 
                         className={cl.SendMail__form_group}
                         variants={fieldVariants}
+                        whileHover="hover"
                     >
                         <label htmlFor="message" className={cl.SendMail__label}>Сообщение *</label>
                         <motion.textarea 
@@ -311,6 +362,7 @@ export const SendMail = (props: SendMailProps) => {
                             required
                             whileFocus={{ 
                                 scale: 1.02,
+                                y: -1,
                                 transition: { duration: 0.2 }
                             }}
                         />
