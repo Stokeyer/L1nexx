@@ -25,6 +25,65 @@
     display: flex;
     flex-direction: row;
     width: 1088px;
-    height: 931px;
+    height: 616px;
     margin-top: 50px;
+}
+
+/* Адаптивные стили для основного контейнера */
+@media (max-width: 1200px) {
+    .Contacts__form_container {
+        width: 90%;
+        max-width: 1000px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .div h1 {
+        font-size: 32px;
+        margin-top: 40px;
+    }
+    
+    .div p {
+        font-size: 18px;
+    }
+    
+    .Contacts__form_container {
+        width: 95%;
+        height: auto;
+        flex-direction: column;
+        margin-top: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .div h1 {
+        font-size: 28px;
+        margin-top: 30px;
+    }
+    
+    .div p {
+        font-size: 16px;
+    }
+    
+    .Contacts__form_container {
+        width: 100%;
+        margin-top: 30px;
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .div h1 {
+        font-size: 24px;
+        margin-top: 20px;
+    }
+    
+    .div p {
+        font-size: 14px;
+    }
+    
+    .Contacts__form_container {
+        padding: 0 16px;
+        margin-top: 20px;
+    }
 }

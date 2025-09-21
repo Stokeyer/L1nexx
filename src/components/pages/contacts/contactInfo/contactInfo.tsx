@@ -437,6 +437,8 @@ export const ContactInfo = (props: ContactInfoProps) => {
                     </motion.section>
 
                 </motion.div>
+            
+                
             </div>
         </motion.div>
     )
