@@ -360,11 +360,6 @@ export const SendMail = (props: SendMailProps) => {
                             placeholder="Расскажите подробнее о вашем предложении..."
                             rows={4}
                             required
-                            whileFocus={{ 
-                                scale: 1.02,
-                                y: -1,
-                                transition: { duration: 0.2 }
-                            }}
                         />
                     </motion.div>
 
