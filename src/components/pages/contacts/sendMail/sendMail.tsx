@@ -1,7 +1,7 @@
 
 import cl from "./styles.module.scss";
 import type { SendMailProps } from "./types";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import CustomSelect from "./CustomSelect";
 
@@ -134,6 +134,17 @@ export const SendMail = (props: SendMailProps) => {
     const sendMailData = { ...defaultSendMailProps, ...props };
     const SendMailContainer = sendMailData.SendMailContainer;
     const [selectedTheme, setSelectedTheme] = useState('');
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        company: '',
+        message: ''
+    });
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitStatus, setSubmitStatus] = useState<{
+        type: 'success' | 'error' | null;
+        message: string;
+    }>({ type: null, message: '' });
 
     const themeOptions = [
         { value: '', label: 'Выберите тему' },
@@ -142,6 +153,75 @@ export const SendMail = (props: SendMailProps) => {
         { value: 'consultation', label: 'Консультация' },
         { value: 'other', label: 'Другое' }
     ];
+
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({
+            ...prev,
+            [name]: value
+        }));
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        
+        if (!selectedTheme) {
+            setSubmitStatus({
+                type: 'error',
+                message: 'Пожалуйста, выберите тему сообщения'
+            });
+            // Автоматически скрываем сообщение через 5 секунд
+            setTimeout(() => {
+                setSubmitStatus({ type: null, message: '' });
+            }, 5000);
+            return;
+        }
+
+        setIsSubmitting(true);
+        setSubmitStatus({ type: null, message: '' });
+
+        try {
+            const apiUrl = import.meta.env.PROD 
+                ? '/api/telegram/send-message' 
+                : 'http://localhost:5555/telegram/send-message';
+            
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    ...formData,
+                    theme: selectedTheme
+                }),
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                setSubmitStatus({
+                    type: 'success',
+                    message: 'Сообщение успешно отправлено!'
+                });
+                // Автоматически скрываем сообщение через 5 секунд
+                setTimeout(() => {
+                    setSubmitStatus({ type: null, message: '' });
+                }, 5000);
+            } else {
+                setSubmitStatus({
+                    type: 'error',
+                    message: result.message || 'Произошла ошибка при отправке'
+                });
+            }
+        } catch (error) {
+            setSubmitStatus({
+                type: 'error',
+                message: 'Ошибка соединения с сервером'
+            });
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
     return (
         <>
         <motion.div
@@ -164,6 +244,7 @@ export const SendMail = (props: SendMailProps) => {
                 <motion.form
                     className={cl.SendMail__form}
                     variants={formVariants}
+                    onSubmit={handleSubmit}
                 >
                     <motion.div
                         className={cl.SendMail__form_group}
@@ -174,8 +255,11 @@ export const SendMail = (props: SendMailProps) => {
                         <motion.input
                             type="text"
                             id="name"
+                            name="name"
                             className={cl.SendMail__input}
                             placeholder="Ваше имя"
+                            value={formData.name}
+                            onChange={handleInputChange}
                             required
                             whileFocus={{
                                 scale: 1.02,
@@ -194,8 +278,11 @@ export const SendMail = (props: SendMailProps) => {
                         <motion.input
                             type="email"
                             id="email"
+                            name="email"
                             className={cl.SendMail__input}
                             placeholder="your.email@example.com"
+                            value={formData.email}
+                            onChange={handleInputChange}
                             required
                             whileFocus={{
                                 scale: 1.02,
@@ -214,8 +301,11 @@ export const SendMail = (props: SendMailProps) => {
                         <motion.input
                             type="text"
                             id="company"
+                            name="company"
                             className={cl.SendMail__input}
                             placeholder="Название компании"
+                            value={formData.company}
+                            onChange={handleInputChange}
                             whileFocus={{
                                 scale: 1.02,
                                 y: -1,
@@ -253,20 +343,49 @@ export const SendMail = (props: SendMailProps) => {
                         <label htmlFor="message" className={cl.SendMail__label}>Сообщение *</label>
                         <motion.textarea
                             id="message"
+                            name="message"
                             className={cl.SendMail__textarea}
                             placeholder="Расскажите подробнее о вашем предложении..."
                             rows={4}
+                            value={formData.message}
+                            onChange={handleInputChange}
                             required
                         />
                     </motion.div>
 
-                    <motion.button
-                        type="submit"
-                        className={cl.SendMail__button}
-                        variants={buttonVariants}
-                    >
-                        <span>Отправить сообщение</span>
-                    </motion.button>
+                    {submitStatus.type && (
+                        <motion.div
+                            className={`${cl.SendMail__status} ${cl[`SendMail__status_${submitStatus.type}`]}`}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -20 }}
+                        >
+                            {submitStatus.message}
+                        </motion.div>
+                    )}
+
+                    <AnimatePresence>
+                        {submitStatus.type !== 'success' && 
+                         submitStatus.type !== 'error' && (
+                            <motion.button
+                                key="submit-button"
+                                type="submit"
+                                className={cl.SendMail__button}
+                                variants={buttonVariants}
+                                disabled={isSubmitting}
+                                whileHover={!isSubmitting ? { scale: 1.05 } : {}}
+                                whileTap={!isSubmitting ? { scale: 0.95 } : {}}
+                                initial={{ opacity: 1, scale: 1 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0.8, y: 20 }}
+                                transition={{ duration: 0.3 }}
+                            >
+                                <span>
+                                    {isSubmitting ? 'Отправка...' : 'Отправить сообщение'}
+                                </span>
+                            </motion.button>
+                        )}
+                    </AnimatePresence>
                 </motion.form>
             </div>
         </motion.div>
