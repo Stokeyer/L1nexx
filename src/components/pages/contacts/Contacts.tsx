@@ -3,6 +3,7 @@ import { ContentTransition } from "../../transitions/ContentTransition.tsx";
 import cl from "./styles.module.scss";
 import { ContactInfo } from "./contactInfo/contactInfo.tsx";
 import { SendMail } from "./sendMail/sendMail.tsx";
+import { Footer } from "../home/footer/footer.tsx";
 
 const headerData = {
   home: "Главная",
@@ -28,6 +29,7 @@ export const Contacts = () => {
          </div>
       </div>
     </ContentTransition>
+    <Footer/>
     </>
   );
 }

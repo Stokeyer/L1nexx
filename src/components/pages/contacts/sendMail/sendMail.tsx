@@ -368,7 +368,7 @@ export const SendMail = (props: SendMailProps) => {
                         className={cl.SendMail__button}
                         variants={buttonVariants}
                     >
-                        Отправить сообщение
+                        <span>Отправить сообщение</span>
                     </motion.button>
                 </motion.form>
             </div>
