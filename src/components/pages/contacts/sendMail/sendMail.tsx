@@ -4,6 +4,7 @@ import type { SendMailProps } from "./types";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import CustomSelect from "./CustomSelect";
+import { sendTelegramMessage } from "../../../../config/telegram";
 
 // Анимации для формы
 const containerVariants = {
@@ -162,6 +163,7 @@ export const SendMail = (props: SendMailProps) => {
         }));
     };
 
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         
@@ -181,45 +183,43 @@ export const SendMail = (props: SendMailProps) => {
         setSubmitStatus({ type: null, message: '' });
 
         try {
-            const apiUrl = import.meta.env.PROD 
-                ? '/api/telegram/send-message' 
-                : 'http://localhost:5555/telegram/send-message';
-            
-            const response = await fetch(apiUrl, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    ...formData,
-                    theme: selectedTheme
-                }),
+            const success = await sendTelegramMessage({
+                ...formData,
+                theme: selectedTheme
             });
 
-            const result = await response.json();
-
-            if (result.success) {
+            if (success) {
                 setSubmitStatus({
                     type: 'success',
-                    message: 'Сообщение успешно отправлено!'
+                    message: 'Сообщение успешно отправлено в Telegram!'
                 });
-                // Автоматически скрываем сообщение через 5 секунд
-                setTimeout(() => {
-                    setSubmitStatus({ type: null, message: '' });
-                }, 5000);
+                
+                // Очищаем форму после успешной отправки
+                setFormData({
+                    name: '',
+                    email: '',
+                    company: '',
+                    message: ''
+                });
+                setSelectedTheme('');
             } else {
                 setSubmitStatus({
                     type: 'error',
-                    message: result.message || 'Произошла ошибка при отправке'
+                    message: 'Ошибка при отправке сообщения'
                 });
             }
         } catch (error) {
             setSubmitStatus({
                 type: 'error',
-                message: 'Ошибка соединения с сервером'
+                message: 'Ошибка соединения с Telegram'
             });
         } finally {
             setIsSubmitting(false);
+            
+            // Автоматически скрываем сообщение через 5 секунд
+            setTimeout(() => {
+                setSubmitStatus({ type: null, message: '' });
+            }, 5000);
         }
     };
     return (

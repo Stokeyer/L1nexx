@@ -14,11 +14,11 @@ const defaultHeaderData: HeaderProps = {
 };
 
 const NAVIGATION_PATHS: { [key: string]: string } = {
-  home: '/',
-  about: '/about',
-  skills: '/skills',
-  project: '/project',
-  contacts: '/contacts'
+  home: "/",
+  about: "/about",
+  skills: "/skills",
+  project: "/project",
+  contacts: "/contacts",
 };
 
 // Варианты анимаций для Framer Motion
@@ -29,9 +29,9 @@ const headerVariants = {
     opacity: 1,
     transition: {
       duration: 0.8,
-      ease: [0.25, 0.1, 0.25, 1] as const
-    }
-  }
+      ease: [0.25, 0.1, 0.25, 1] as const,
+    },
+  },
 };
 
 const navVariants = {
@@ -41,9 +41,9 @@ const navVariants = {
     transition: {
       duration: 0.6,
       staggerChildren: 0.1,
-      delayChildren: 0.3
-    }
-  }
+      delayChildren: 0.3,
+    },
+  },
 };
 
 const navItemVariants = {
@@ -53,9 +53,9 @@ const navItemVariants = {
     opacity: 1,
     transition: {
       duration: 0.4,
-      ease: "easeOut" as const
-    }
-  }
+      ease: "easeOut" as const,
+    },
+  },
 };
 
 const logoVariants = {
@@ -65,50 +65,49 @@ const logoVariants = {
     opacity: 1,
     transition: {
       duration: 0.6,
-      ease: "backOut" as const
-    }
-  }
+      ease: "backOut" as const,
+    },
+  },
 };
-
 
 export const Header: React.FC<HeaderProps> = (props = defaultHeaderData) => {
   const headerData = { ...defaultHeaderData, ...props };
-  
+
   const [activeItem, setActiveItem] = useState(() => {
-    const saved = localStorage.getItem('activeNavItem');
+    const saved = localStorage.getItem("activeNavItem");
     return saved || "home";
   });
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    localStorage.setItem('activeNavItem', activeItem);
+    localStorage.setItem("activeNavItem", activeItem);
   }, [activeItem]);
 
   useEffect(() => {
     if (isMobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     }
     return () => {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     };
   }, [isMobileMenuOpen]);
 
   useEffect(() => {
     const currentPath = window.location.pathname;
-    
-    if (currentPath.includes('/about')) {
-      setActiveItem('about');
-    } else if (currentPath.includes('/skills')) {
-      setActiveItem('skills');
-    } else if (currentPath.includes('/project')) {
-      setActiveItem('project');
-    } else if (currentPath.includes('/contacts')) {
-      setActiveItem('contacts');
+
+    if (currentPath.includes("/about")) {
+      setActiveItem("about");
+    } else if (currentPath.includes("/skills")) {
+      setActiveItem("skills");
+    } else if (currentPath.includes("/project")) {
+      setActiveItem("project");
+    } else if (currentPath.includes("/contacts")) {
+      setActiveItem("contacts");
     } else {
-      setActiveItem('home');
+      setActiveItem("home");
     }
   }, []);
   const handleClick = (
@@ -118,12 +117,11 @@ export const Header: React.FC<HeaderProps> = (props = defaultHeaderData) => {
     e.preventDefault();
     setActiveItem(item);
     setIsMobileMenuOpen(false);
-    
-    const path = NAVIGATION_PATHS[item] || '/';
-    
-    window.history.pushState({}, '', path);
-    window.dispatchEvent(new PopStateEvent('popstate'));
-    
+
+    const path = NAVIGATION_PATHS[item] || "/";
+
+    window.history.pushState({}, "", path);
+    window.dispatchEvent(new PopStateEvent("popstate"));
   };
 
   const toggleMobileMenu = () => {
@@ -131,7 +129,7 @@ export const Header: React.FC<HeaderProps> = (props = defaultHeaderData) => {
   };
 
   const renderNavItem = (key: string, href: string, label: string) => (
-    <motion.li 
+    <motion.li
       className={cl[`header__${key}`]}
       variants={navItemVariants}
       whileHover={{ scale: 1.05 }}
@@ -148,22 +146,24 @@ export const Header: React.FC<HeaderProps> = (props = defaultHeaderData) => {
   );
 
   return (
-    <motion.div 
+    <motion.div
       className={cl.header}
       variants={headerVariants}
       initial="hidden"
       animate="visible"
     >
       <div className={cl.header__container}>
-        <motion.nav
-          variants={logoVariants}
-        >
-          <a href="./"><span className={cl.logo}>FD</span></a>
-          <a href="./" className={cl.logo__text}><span>Frontend Developer</span></a>
+        <motion.nav variants={logoVariants}>
+          <a href="./">
+            <span className={cl.logo}>FD</span>
+          </a>
+          <a href="./" className={cl.logo__text}>
+            <span>Frontend Developer</span>
+          </a>
         </motion.nav>
-        
-        <motion.button 
-          className={`${cl.burger} ${isMobileMenuOpen ? cl.burger_active : ''}`}
+
+        <motion.button
+          className={`${cl.burger} ${isMobileMenuOpen ? cl.burger_active : ""}`}
           onClick={toggleMobileMenu}
           aria-label="Toggle menu"
           whileHover={{ scale: 1.05 }}
@@ -177,25 +177,28 @@ export const Header: React.FC<HeaderProps> = (props = defaultHeaderData) => {
           <span></span>
         </motion.button>
 
-        <motion.section 
-          className={cl.header__section}
-          variants={navVariants}
-        >
+        <motion.section className={cl.header__section} variants={navVariants}>
           <ul>
             {renderNavItem("home", "./", headerData.header.home)}
             {renderNavItem("about", "./about", headerData.header.about)}
             {renderNavItem("skills", "./skills", headerData.header.skills)}
             {renderNavItem("project", "./project", headerData.header.project)}
-            {renderNavItem("contacts", "./contacts", headerData.header.contacts)}
+            {renderNavItem(
+              "contacts",
+              "./contacts",
+              headerData.header.contacts
+            )}
           </ul>
         </motion.section>
 
-        <motion.div 
-          className={`${cl.mobile__menu} ${isMobileMenuOpen ? cl.mobile__menu_open : ''}`}
+        <motion.div
+          className={`${cl.mobile__menu} ${
+            isMobileMenuOpen ? cl.mobile__menu_open : ""
+          }`}
           initial={{ opacity: 0, y: -20 }}
-          animate={{ 
+          animate={{
             opacity: isMobileMenuOpen ? 1 : 0,
-            y: isMobileMenuOpen ? 0 : -20
+            y: isMobileMenuOpen ? 0 : -20,
           }}
           transition={{ duration: 0.3 }}
         >
@@ -204,7 +207,11 @@ export const Header: React.FC<HeaderProps> = (props = defaultHeaderData) => {
             {renderNavItem("about", "./about", headerData.header.about)}
             {renderNavItem("skills", "./skills", headerData.header.skills)}
             {renderNavItem("project", "./project", headerData.header.project)}
-            {renderNavItem("contacts", "./contacts", headerData.header.contacts)}
+            {renderNavItem(
+              "contacts",
+              "./contacts",
+              headerData.header.contacts
+            )}
           </ul>
         </motion.div>
       </div>
