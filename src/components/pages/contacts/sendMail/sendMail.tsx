@@ -4,7 +4,6 @@ import type { SendMailProps } from "./types";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import CustomSelect from "./CustomSelect";
-import { sendTelegramMessage } from "../../../../config/telegram";
 
 // Анимации для формы
 const containerVariants = {
@@ -155,6 +154,11 @@ export const SendMail = (props: SendMailProps) => {
         { value: 'other', label: 'Другое' }
     ];
 
+    const getThemeLabel = (themeValue: string) => {
+        const theme = themeOptions.find(option => option.value === themeValue);
+        return theme ? theme.label : themeValue;
+    };
+
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
         setFormData(prev => ({
@@ -164,6 +168,34 @@ export const SendMail = (props: SendMailProps) => {
     };
 
 
+    const sendToTelegram = async (data: any) => {
+        const botToken = 'BOT-TOKEN';
+        const chatId = 'CHAT-ID';
+        
+        const message = `📧 Новое сообщение с сайта
+
+👤 Имя: ${data.name}
+📧 Email: ${data.email}
+🏢 Компания: ${data.company || 'Не указана'}
+📋 Тема: ${getThemeLabel(data.theme)}
+💬 Сообщение: ${data.message}
+
+⏰ Время: ${new Date().toLocaleString('ru-RU')}`;
+
+        const response = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                chat_id: chatId,
+                text: message
+            }),
+        });
+
+        return response.ok;
+    };
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         
@@ -172,7 +204,6 @@ export const SendMail = (props: SendMailProps) => {
                 type: 'error',
                 message: 'Пожалуйста, выберите тему сообщения'
             });
-            // Автоматически скрываем сообщение через 5 секунд
             setTimeout(() => {
                 setSubmitStatus({ type: null, message: '' });
             }, 5000);
@@ -183,7 +214,7 @@ export const SendMail = (props: SendMailProps) => {
         setSubmitStatus({ type: null, message: '' });
 
         try {
-            const success = await sendTelegramMessage({
+            const success = await sendToTelegram({
                 ...formData,
                 theme: selectedTheme
             });
@@ -215,8 +246,6 @@ export const SendMail = (props: SendMailProps) => {
             });
         } finally {
             setIsSubmitting(false);
-            
-            // Автоматически скрываем сообщение через 5 секунд
             setTimeout(() => {
                 setSubmitStatus({ type: null, message: '' });
             }, 5000);

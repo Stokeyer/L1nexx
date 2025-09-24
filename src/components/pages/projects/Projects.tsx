@@ -49,7 +49,7 @@ export const Projects = () => {
         </ContentTransition>
         <ContentTransition delay={500}>
           <p style={subtitleStyles} className={cl.fadeInUp}>
-           Здесь пока нечего нету =(</p>
+          Здесь пока что ничего нет</p>
         </ContentTransition>
       </main>
     </div>

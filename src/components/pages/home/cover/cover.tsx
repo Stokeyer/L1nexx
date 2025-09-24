@@ -162,7 +162,9 @@ export const Cover: React.FC<CoverProps> = (props = defaultCoverData) => {
                         whileTap={{ scale: 0.95 }}
                         transition={{ duration: 0.2 }}
                     >
-                        Посмотреть проекты
+                        <span style={{ pointerEvents: 'none', width: '100%' }}>
+                            Посмотреть проекты
+                        </span>
                     </motion.button>
                     <motion.button 
                         onClick={() => handleNavigation('/contacts')} 

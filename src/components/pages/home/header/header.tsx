@@ -1,7 +1,7 @@
 import cl from "./styles.module.scss";
 import type { HeaderProps } from "./types";
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 const defaultHeaderData: HeaderProps = {
   header: {
@@ -145,6 +145,22 @@ export const Header: React.FC<HeaderProps> = (props = defaultHeaderData) => {
     </motion.li>
   );
 
+  const renderMobileNavItem = (key: string, href: string, label: string) => (
+    <motion.li
+      variants={navItemVariants}
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+    >
+      <a
+        href={href}
+        className={activeItem === key ? cl.active : ""}
+        onClick={(e) => handleClick(e, key)}
+      >
+        {label}
+      </a>
+    </motion.li>
+  );
+
   return (
     <motion.div
       className={cl.header}
@@ -191,29 +207,39 @@ export const Header: React.FC<HeaderProps> = (props = defaultHeaderData) => {
           </ul>
         </motion.section>
 
-        <motion.div
-          className={`${cl.mobile__menu} ${
-            isMobileMenuOpen ? cl.mobile__menu_open : ""
-          }`}
-          initial={{ opacity: 0, y: -20 }}
-          animate={{
-            opacity: isMobileMenuOpen ? 1 : 0,
-            y: isMobileMenuOpen ? 0 : -20,
-          }}
-          transition={{ duration: 0.3 }}
-        >
-          <ul>
-            {renderNavItem("home", "./", headerData.header.home)}
-            {renderNavItem("about", "./about", headerData.header.about)}
-            {renderNavItem("skills", "./skills", headerData.header.skills)}
-            {renderNavItem("project", "./project", headerData.header.project)}
-            {renderNavItem(
-              "contacts",
-              "./contacts",
-              headerData.header.contacts
-            )}
-          </ul>
-        </motion.div>
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              className={`${cl.mobile__menu} ${cl.mobile__menu_open}`}
+              initial={{ opacity: 0, x: -100 }}
+              animate={{
+                opacity: 1,
+                x: 0,
+              }}
+              exit={{
+                opacity: 0,
+                x: -100,
+              }}
+              transition={{ duration: 0.3 }}
+            >
+              <motion.ul
+                variants={navVariants}
+                initial="hidden"
+                animate="visible"
+              >
+                {renderMobileNavItem("home", "./", headerData.header.home)}
+                {renderMobileNavItem("about", "./about", headerData.header.about)}
+                {renderMobileNavItem("skills", "./skills", headerData.header.skills)}
+                {renderMobileNavItem("project", "./project", headerData.header.project)}
+                {renderMobileNavItem(
+                  "contacts",
+                  "./contacts",
+                  headerData.header.contacts
+                )}
+              </motion.ul>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </motion.div>
   );
