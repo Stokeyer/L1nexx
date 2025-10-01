@@ -170,7 +170,7 @@ export const SendMail = (props: SendMailProps) => {
 
     const sendToTelegram = async (data: any) => {
         const botToken = 'BOT-TOKEN';
-        const chatId = 'CHAT-ID';
+        const chatId = 'USERID';
         
         const message = `📧 Новое сообщение с сайта
 

@@ -46,8 +46,9 @@
     <link rel="preload" href="/src/App.css" as="style">
     
     <!-- Preload критических изображений -->
-    <link rel="preload" href="/src/components/assets/optimized/avatar-optimized.avif" as="image" type="image/avif">
-    <link rel="preload" href="/src/components/assets/optimized/avatar-optimized.webp" as="image" type="image/webp">
+    <link rel="preload" href="/src/components/assets/optimized/avatar-optimized.avif" as="image" type="image/avif" media="(min-width: 768px)">
+    <link rel="preload" href="/src/components/assets/optimized/avatar-optimized.webp" as="image" type="image/webp" media="(min-width: 768px)">
+    <link rel="preload" href="/src/components/assets/cover/avatar.webp" as="image" type="image/webp" media="(max-width: 767px)">
     
     <!-- Критический CSS inline для улучшения LCP -->
     <style>
@@ -162,18 +163,6 @@
       })();
     </script>
 
-<script type="text/javascript">
-  (function(m,e,t,r,i,k,a){
-      m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-      m[i].l=1*new Date();
-      for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-      k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-  })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=104267869', 'ym');
-
-  ym(104267869, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
-</script>
-<noscript><div><img src="https://mc.yandex.ru/watch/104267869" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- /Yandex.Metrika counter -->
 
 
 
